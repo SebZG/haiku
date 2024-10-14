@@ -1,17 +1,26 @@
-import Link from 'next/link';
+import RegisterForm from '../components/RegisterForm';
+import { getUserFromCookie } from '../lib/getUser';
 
-import RegisterForm from '../components/registerForm';
+export default async function Page() {
+    const user = await getUserFromCookie();
 
-export default function Page() {
     return (
         <>
+            {user && (
+                <p>
+                    Welcome, you are logged in!
+                </p>
+            )}
 
-            <p className='text-center text-2xl text-gray-600 mb-5'>
-                Don't have an account? <strong>Create One</strong>
-            </p>
+            {!user && (
+                <>
+                    <p className='text-center text-2xl text-gray-600 mb-5'>
+                        Don't have an account? <strong>Create One</strong>
+                    </p>
 
-            <RegisterForm />
-
+                    <RegisterForm />
+                </>
+            )}
         </>
     )
 }
