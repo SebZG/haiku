@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { getUserFromCookie } from '../lib/getUser';
-import { logOut } from '../actions/userController';
+import { getUserFromCookie } from '@/lib/getUser';
+import { logOut } from '@/actions/userController';
 
 export default async function Header() {
     const user = await getUserFromCookie();

@@ -5,8 +5,8 @@ import { redirect } from 'next/navigation';
 import { ObjectId } from 'mongodb';
 import cloudinary from 'cloudinary';
 
-import { getUserFromCookie } from '../lib/getUser';
-import { getCollection } from '../lib/db';
+import { getUserFromCookie } from '@/lib/getUser';
+import { getCollection } from '@/lib/db';
 
 const cloudinaryConfig = cloudinary.config({
 	cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,

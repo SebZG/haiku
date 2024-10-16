@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useFormState } from "react-dom";
 
-import { createHaiku, editHaiku } from "../actions/haikuController";
+import { createHaiku, editHaiku } from "@/actions/haikuController";
 
 import { CldUploadWidget } from "next-cloudinary";
 

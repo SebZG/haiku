@@ -2,10 +2,10 @@ import { redirect } from "next/navigation";
 
 import { ObjectId } from "mongodb";
 
-import { getCollection } from "../../../lib/db";
-import { getUserFromCookie } from "../../../lib/getUser";
+import { getCollection } from "@/lib/db";
+import { getUserFromCookie } from "@/lib/getUser";
 
-import HaikuForm from "../../../components/HaikuForm"
+import HaikuForm from "@/components/HaikuForm"
 
 async function getDoc(id) {
     const haikusCollection = await getCollection('haikus');

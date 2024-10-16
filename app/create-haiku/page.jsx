@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-import { getUserFromCookie } from "../../lib/getUser";
+import { getUserFromCookie } from "@/lib/getUser";
 
-import HaikuForm from "../../components/HaikuForm";
+import HaikuForm from "@/components/HaikuForm";
 
 export default async function Page() {
     const user = await getUserFromCookie();
