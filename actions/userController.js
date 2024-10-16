@@ -1,10 +1,12 @@
 'use server';
 
-import { getCollection } from '../lib/db';
 import bcrypt from 'bcrypt';
-import { cookies } from 'next/headers';
 import jwt from 'jsonwebtoken';
+
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+
+import { getCollection } from '../lib/db';
 
 function isAlphaNumeric(x) {
 	const regex = /^[a-zA-Z0-9]*$/;
@@ -19,7 +21,7 @@ export const logOut = async function () {
 export const logIn = async function (prevState, formData) {
 	const errors = {
 		success: false,
-		message: 'Invalid username / password',
+		message: 'Invalid username / password.',
 	};
 	const ourUser = {
 		username: formData.get('username'),
@@ -56,7 +58,7 @@ export const logIn = async function (prevState, formData) {
 		process.env.JWT_SECRET,
 	);
 
-	// Log the use in by giving them a cookie
+	// Log the user in by giving them a cookie
 	cookies().set('haiku', tokenValue, {
 		httpOnly: true,
 		sameSite: 'strict',
@@ -86,16 +88,16 @@ export const register = async function (prevState, formData) {
 
 	// Username rules
 	if (ourUser.username.length < 3) {
-		errors.username = 'Username must be at least 3 characters';
+		errors.username = 'Username must be at least 3 characters.';
 	}
 	if (ourUser.username.length > 30) {
-		errors.username = 'Username cannot exceed 30 characters';
+		errors.username = 'Username cannot exceed 30 characters.';
 	}
 	if (!isAlphaNumeric(ourUser.username)) {
-		errors.username = 'You can only use a-z and 0-9';
+		errors.username = 'You can only use a-z and 0-9.';
 	}
 	if (ourUser.username === '') {
-		errors.username = 'You must provide a username';
+		errors.username = 'You must provide a username.';
 	}
 
 	// Check if user already exists or not
@@ -110,13 +112,13 @@ export const register = async function (prevState, formData) {
 
 	// Password rules
 	if (ourUser.password.length < 12) {
-		errors.password = 'Password must be at least 12 characters';
+		errors.password = 'Password must be at least 12 characters.';
 	}
 	if (ourUser.password.length > 50) {
-		errors.password = 'Password cannot exceed 50 characters';
+		errors.password = 'Password cannot exceed 50 characters.';
 	}
 	if (ourUser.password === '') {
-		errors.password = 'You must provide a password';
+		errors.password = 'You must provide a password.';
 	}
 
 	// Check if errors
